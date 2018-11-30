@@ -1,4 +1,3 @@
-# christmas-lights
 ## Christmas lights python tools
 
 ### christmas_lights.py
