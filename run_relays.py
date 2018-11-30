@@ -40,10 +40,10 @@ for relay in relays:
 for bitStamp in bitStampArray:
     for relayNumber in range(8):
         if(int(bitStamp[0], 2) & (int('10000000', 2) >> relayNumber)):
-            GPIO.output(relays[relayNumber], 1)
+            GPIO.output(relays[relayNumber], 0)
             print("{} activated".format(relayNumber+1))
         else:
-            GPIO.output(relays[relayNumber],0)
+            GPIO.output(relays[relayNumber],1)
     sleep(bitStamp[1])
 
 GPIO.cleanup()
