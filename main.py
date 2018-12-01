@@ -1,8 +1,16 @@
-from run_relays import RelayBoard
+from hardware import RelayBoard
+import csv
 
-firstSong = RelayBoard([['11111111',5]])
+with open('song.csv') as song:
+    bitStampArray = []
 
-firstSong.run_relays()
+    bitStampArrayRows = csv.reader(song)
+    for row in bitStampArrayRows:
+        bitStampArray.append([row[0], float(row[1])])
 
-firstSong.close()
+    firstSong = RelayBoard(bitStampArray)
+    
+    firstSong.run_relays()
+
+    firstSong.close()
 

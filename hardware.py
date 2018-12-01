@@ -19,7 +19,6 @@ class RelayBoard:
     def __init__(self, bitStampArray):
         # Setup GPIO for the relays
         GPIO.setmode(GPIO.BCM)
-        GPIO.cleanup()
     
         # Setup all the relays to off
         for relay in relays:
@@ -33,7 +32,7 @@ class RelayBoard:
         for bitStamp in self.bitStampArray:
             for relayNumber in range(8):
                 if(int(bitStamp[0], 2) & (int('10000000', 2) >> relayNumber)):
-                    GPIO.output(relays[relayNumber], 0)
+                    GPIO.output(relays[relayNumber],0)
                     print("{} activated".format(relayNumber+1))
                 else:
                     GPIO.output(relays[relayNumber],1)
