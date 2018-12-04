@@ -9,7 +9,7 @@ with open('song.csv') as song:
         bitStampArray.append([row[0], float(row[1])])
 
     
-    firstSong = RelayBoard(bitStampArray, True)
+    firstSong = RelayBoard(bitStampArray, False)
     try:
         firstSong.run_relays()
         firstSong.close()
