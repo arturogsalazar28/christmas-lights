@@ -1,18 +1,18 @@
 from hardware import RelayBoard
+from hardware import close
 import csv
 
 with open('/home/pi/christmas-lights/tree-show.csv') as song:
-    bitStampArray = []
+    song_array = []
 
     bitStampArrayRows = csv.reader(song)
     for row in bitStampArrayRows:
         if len(row) != 0 and row[0][0] != '#':
-            bitStampArray.append([row[0], float(row[1])])
+            song_array.append([row[0], float(row[1])])
 
-    
-    firstSong = RelayBoard(bitStampArray, True)
+    firstSong = RelayBoard(song_array, True)
     try:
         firstSong.run_relays()
-        firstSong.close()
+        close()
     except:
-        firstSong.close()
+        close()

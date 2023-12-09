@@ -14,15 +14,9 @@ from time import sleep
 
 relays = [2, 3, 4, 14, 15, 18, 17, 27]
 
+class Relay:
 
-def close():
-    # Cleanup the GPIO
-    GPIO.cleanup()
-
-
-class RelayBoard:
-
-    def __init__(self, bit_stamp_array, set_on_loop):
+    def __init__(self, relay_number, state):
         # Setup GPIO for the relays
         GPIO.setmode(GPIO.BCM)
 
