@@ -19,7 +19,7 @@ relays = [2, 3, 4, 14, 15, 18, 17, 27]
 def main(bit_stamp_array):
 
     GPIO.setwarnings(False)
-    
+
     try:
         GPIO.cleanup()
     except:
@@ -43,11 +43,10 @@ def main(bit_stamp_array):
 
 
 
-# init code that takes in a bitstamp from the command line
-if __name__ == "__main__":
-    import sys
-    if len(sys.argv) != 2:
-        print("Usage: python3 relays.py <bitstamp>")
-        sys.exit(1)
-    bit_stamp_array = sys.argv[1]
-    main(bit_stamp_array)
+
+import sys
+if len(sys.argv) != 2:
+    print("Usage: python3 relays.py <bitstamp>")
+    sys.exit(1)
+bit_stamp_array = sys.argv[1]
+main(bit_stamp_array)
