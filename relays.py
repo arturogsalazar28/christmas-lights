@@ -48,5 +48,5 @@ import sys
 if len(sys.argv) != 2:
     print("Usage: python3 relays.py <bitstamp>")
     sys.exit(1)
-bit_stamp_array = sys.argv[1]
+bit_stamp_array = [sys.argv[1]]
 main(bit_stamp_array)
