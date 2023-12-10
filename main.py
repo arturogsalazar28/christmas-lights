@@ -2,7 +2,7 @@ from hardware import RelayBoard
 from hardware import close
 import csv
 
-with open('/home/pi/christmas-lights/tree-show.csv') as song:
+with open('/home/pi/christmas-lights/song.csv') as song:
     song_array = []
 
     bitStampArrayRows = csv.reader(song)
