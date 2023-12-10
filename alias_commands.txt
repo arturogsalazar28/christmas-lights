@@ -1,0 +1,4 @@
+# christmas light aliases go in .bashrc and then run source ~/.bashrc
+alias lights_on="python3 ~/christmas_lights/relays.py 11111111"
+alias lights_off="python3 ~/christmas_lights/relays.py 00000000"
+alias lights_porch_only="python3 ~/christmas_lights/relays.py 00011000"

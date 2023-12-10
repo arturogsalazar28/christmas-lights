@@ -1,0 +1,5 @@
+# run crontab -e
+30 17 * * * lights_on >/dev/null 2>&1
+0 22 * * 0-4 lights_porch_only >/dev/null 2>&1
+0 23 * * 5-6 lights_porch_only >/dev/null 2>&1
+0 1 * * * lights_off >/dev/null 2>&1
