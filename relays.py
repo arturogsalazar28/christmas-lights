@@ -18,12 +18,13 @@ relays = [2, 3, 4, 14, 15, 18, 17, 27]
 # Main function for the program
 def main(bit_stamp_array):
 
+    GPIO.setwarnings(False)
+    
     try:
         GPIO.cleanup()
     except:
         pass
-    
-    GPIO.setwarnings(False)
+
     # Setup GPIO for the relays
     GPIO.setmode(GPIO.BCM)
 
