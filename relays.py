@@ -26,11 +26,11 @@ def main(bit_stamp):
         GPIO.setup(relay, GPIO.OUT)
         GPIO.output(relay, 1)
 
-    for relayNumber in range(8):
-        if int(bit_stamp[0], 2) & (int('10000000', 2) >> relayNumber):
-            GPIO.output(relays[relayNumber], 0)
-        else:
-            GPIO.output(relays[relayNumber], 1)
+    for relay in relays:
+        relay_number = relays.index(relay)
+        state = int(bit_stamp[relay_number])
+        GPIO.output(relay, state)
+        print(f"Relay number: {relay_number} is {'On' if state else 'Off'}")
 
 
 if len(sys.argv) != 2:
