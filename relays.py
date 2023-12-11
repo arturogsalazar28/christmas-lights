@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-from time import sleep
+import sys
 
 # Pin Setup
 # Pin number   WiringPi Pin   BCM Pin  Relay
@@ -16,37 +16,35 @@ relays = [2, 3, 4, 14, 15, 18, 17, 27]
 
 
 # Main function for the program
-def main(bit_stamp_array):
-
-    GPIO.setwarnings(False)
-
+def main(bit_stamp):
     try:
+        # Setup GPIO for the relays
         GPIO.cleanup()
     except:
         pass
 
-    # Setup GPIO for the relays
-    GPIO.setmode(GPIO.BCM)
+    try:
+        GPIO.setmode(GPIO.BCM)
+    except:
+        pass
 
-    # Setup all the relays to off
-    for relay in relays:
-        GPIO.setup(relay, GPIO.OUT)
-        GPIO.output(relay, 1)
-
-    # Based on the bitStampArray, switch the relays on and off starting with 1
-    for bitStamp in bit_stamp_array:
-        for relayNumber in range(8):
-            if int(bitStamp[0], 2) & (int('10000000', 2) >> relayNumber):
-                GPIO.output(relays[relayNumber], 0)
-            else:
-                GPIO.output(relays[relayNumber], 1)
+    try:    # Setup all the relays to off
+        for relay in relays:
+            GPIO.setup(relay, GPIO.OUT)
+            GPIO.output(relay, 1)
+    except:
+        pass
 
 
+    for relayNumber in range(8):
+        if int(bit_stamp[0], 2) & (int('10000000', 2) >> relayNumber):
+            GPIO.output(relays[relayNumber], 0)
+        else:
+            GPIO.output(relays[relayNumber], 1)
 
 
-import sys
 if len(sys.argv) != 2:
     print("Usage: python3 relays.py <bitstamp>")
     sys.exit(1)
-bit_stamp_array = [sys.argv[1]]
-main(bit_stamp_array)
+light_bit_stamp = sys.argv[1]
+main(light_bit_stamp)
