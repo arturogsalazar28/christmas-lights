@@ -46,5 +46,6 @@ def main(bit_stamp):
 if len(sys.argv) != 2:
     print("Usage: python3 relays.py <bitstamp>")
     sys.exit(1)
+
 light_bit_stamp = sys.argv[1]
 main(light_bit_stamp)
