@@ -28,7 +28,7 @@ def main(bit_stamp):
 
     for relay in relays:
         relay_number = relays.index(relay)
-        state = int(bit_stamp[relay_number])
+        state = False if int(bit_stamp[relay_number]) else True
         GPIO.output(relay, state)
         print(f"Relay number: {relay_number} is {'On' if state else 'Off'}")
 
