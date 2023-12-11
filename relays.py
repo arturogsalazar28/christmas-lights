@@ -17,24 +17,14 @@ relays = [2, 3, 4, 14, 15, 18, 17, 27]
 
 # Main function for the program
 def main(bit_stamp):
-    try:
-        # Setup GPIO for the relays
-        GPIO.cleanup()
-    except:
-        pass
 
-    try:
-        GPIO.setmode(GPIO.BCM)
-    except:
-        pass
+    GPIO.setwarnings(False)
 
-    try:    # Setup all the relays to off
-        for relay in relays:
-            GPIO.setup(relay, GPIO.OUT)
-            GPIO.output(relay, 1)
-    except:
-        pass
+    GPIO.setmode(GPIO.BCM)
 
+    for relay in relays:
+        GPIO.setup(relay, GPIO.OUT)
+        GPIO.output(relay, 1)
 
     for relayNumber in range(8):
         if int(bit_stamp[0], 2) & (int('10000000', 2) >> relayNumber):
@@ -49,3 +39,5 @@ if len(sys.argv) != 2:
 
 light_bit_stamp = sys.argv[1]
 main(light_bit_stamp)
+
+
